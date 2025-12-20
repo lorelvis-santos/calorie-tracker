@@ -1,8 +1,21 @@
+import Form from "./components/Form";
+
 function App() {
   return (
     <>
-      <h1 className="text-4xl">Contador de Calorías</h1>
-      <p>Este es un contador de calorías</p>
+      <header className="bg-lime-600 py-3">
+        <div className="max-w-5xl mx-auto flex justify-between">
+          <h1 className="text-center text-xl font-bold text-white uppercase">
+            Contador de Calorías
+          </h1>
+        </div>
+      </header>
+
+      <section className="bg-lime-500 py-20 px-5">
+          <div className="max-w-5xl mx-auto">
+            <Form/>
+          </div>
+        </section>
     </>
   )
 }
