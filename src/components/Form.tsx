@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Activity } from "../types";
+import type { Activity, Category } from "../types";
 import { categories } from "../data/categories"
 
 export default function Form() {
@@ -21,6 +21,10 @@ export default function Form() {
   const isValidActivity = () => {
     const { name, calories} = activity;
     return name.trim() !== "" && calories > 0;
+  }
+
+  const getCategory = (id: Category["id"]): Category | null => {
+    return categories.find(x => x.id === id) ?? null;
   }
 
   return (
@@ -74,7 +78,7 @@ export default function Form() {
       <input
         type="submit"
         className="bg-gray-800 hover:bg-gray-900 w-full p-2 font-bold uppercase text-white cursor-pointer transition-colors mt-5 rounded-lg disabled:opacity-10"
-        value="Guardar"
+        value={`Guardar ${getCategory(activity.category)?.name}`}
         disabled={!isValidActivity()}
       />
     </form>
