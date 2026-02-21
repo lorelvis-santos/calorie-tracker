@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import type { Activity, Category } from "../types"
 import { categories } from "../data/categories";
 
@@ -25,10 +26,11 @@ export const ActivitiesList = ({ activities } : ActivitiesListProps) => {
           className="px-5 py-10 bg-white mt-5 flex justify-between"
         >
           <div className="space-y-2 relative">
-            <p>
+            <p 
+              className={`absolute -top-6 -left-8 text-white font-bold uppercase px-10 py-2 ${activity.category === 1 ? "bg-lime-500" : "bg-orange-500"}`}>
               {categoryName(activity.category)}
             </p>
-            <p className="text-xl font-bold pt-5">
+            <p className="text-xl font-bold pt-5 mt-2">
               {activity.name}
             </p>
             <p className="font-bold text-2xl text-lime-500">
@@ -36,8 +38,12 @@ export const ActivitiesList = ({ activities } : ActivitiesListProps) => {
               <span>calorías</span>
             </p>
           </div>
-          <div>
-
+          <div className="flex gap-5 items-center">
+            <button className="cursor-pointer">
+              <PencilSquareIcon 
+                className="h-8 w-8 text-gray-800 hover:text-gray-900 hover:scale-105 transition-all"
+              />
+            </button>
           </div>
         </div>
       ))}
