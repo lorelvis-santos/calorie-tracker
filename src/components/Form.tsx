@@ -1,11 +1,12 @@
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, useEffect, Dispatch } from "react";
 import type { Activity, Category } from "../types";
 import { v4 as uuidv4 } from "uuid";
 import { categories } from "../data/categories"
-import type { ActivityActions } from "../reducers/activityReducer";
+import type { ActivityActions, ActivityState } from "../reducers/activityReducer";
 
 type FormProps = {
-  dispatch: React.ActionDispatch<[action: ActivityActions]>
+  state: ActivityState;
+  dispatch: Dispatch<ActivityActions>;
 }
 
 const initialState: Activity = {
@@ -15,8 +16,21 @@ const initialState: Activity = {
   calories: 0
 }
 
-export default function Form({ dispatch } : FormProps) {
+const getCategory = (id: Category["id"]): Category | null => {
+  return categories.find(x => x.id === id) ?? null;
+}
+
+export default function Form({ state, dispatch } : FormProps) {
   const [activity, setActivity] = useState<Activity>(initialState);
+
+  useEffect(() => {
+    const selectedActivity = state.activities.find(x => x.id === state.currentId);
+    if (!selectedActivity) {
+      return;
+    }
+    
+    setActivity(selectedActivity);
+  }, [state.currentId, state.activities]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const isNumberField = ["category", "calories"].includes(e.target.id);
@@ -30,10 +44,6 @@ export default function Form({ dispatch } : FormProps) {
   const isValidActivity = () => {
     const { name, calories } = activity;
     return name.trim() !== "" && calories > 0;
-  }
-
-  const getCategory = (id: Category["id"]): Category | null => {
-    return categories.find(x => x.id === id) ?? null;
   }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
