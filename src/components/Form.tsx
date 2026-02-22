@@ -1,4 +1,4 @@
-import { useState, type FormEvent, useEffect, Dispatch } from "react";
+import { useState, type FormEvent, useEffect, type Dispatch } from "react";
 import type { Activity, Category } from "../types";
 import { v4 as uuidv4 } from "uuid";
 import { categories } from "../data/categories"
