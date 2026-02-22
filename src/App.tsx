@@ -14,9 +14,9 @@ function App() {
 
   return (
     <>
-      <header className="bg-lime-600 py-3">
-        <div className="max-w-5xl mx-auto flex justify-between">
-          <h1 className="text-center text-xl font-bold text-white uppercase">
+      <header className="bg-lime-600 py-3 px-5">
+        <div className="max-w-5xl mx-auto flex justify-between gap-2 items-center">
+          <h1 className="md:text-center text-xl font-bold text-white uppercase">
             Contador de Calorías
           </h1>
 
@@ -39,7 +39,7 @@ function App() {
         </div>
       </section>
 
-      <section className="bg-gray-800 py-10">
+      <section className="bg-gray-800 py-10 px-5">
         <div className="max-w-4xl mx-auto">
           <CalorieTracker
             activities={state.activities}
