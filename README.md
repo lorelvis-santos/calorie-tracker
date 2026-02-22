@@ -1,73 +1,145 @@
-# React + TypeScript + Vite
+# 🍎 Calorie Tracker -- React & TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was developed as part of the React & TypeScript -- La Guía
+Completa course by Juan de la Torre (Udemy).
 
-Currently, two official plugins are available:
+Calorie Tracker is a fully functional web application designed to
+monitor calorie intake and expenditure in a structured and intuitive
+way. The application emphasizes advanced state management patterns,
+strong type safety with TypeScript, and a modern responsive UI built
+with Tailwind CSS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+------------------------------------------------------------------------
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### 🔹 Activity Tracking
 
-## Expanding the ESLint configuration
+Easily log food consumption and physical activities, each with a
+specific calorie value.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🔹 Advanced State Management
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Implements the `useReducer` hook to handle complex state transitions
+such as: 
+- Adding activities 
+- Editing entries 
+- Deleting records
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 🔹 Data Persistence
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+All activity data is automatically stored in **localStorage**, ensuring
+persistence even after refreshing or closing the browser.
+
+### 🔹 Real-Time Calorie Summary
+
+Live calculations for:
+- Total calories consumed
+- Total calories burned 
+- Net calorie balance
+
+### 🔹 Form Validation
+
+Dynamic form validation prevents incomplete or invalid entries before
+submission.
+
+### 🔹 Responsive Design
+
+Built with a **mobile-first approach** using Tailwind CSS to ensure a
+seamless experience across all devices.
+
+------------------------------------------------------------------------
+
+## 🧠 Key Concepts Practiced
+
+-   Advanced React Hooks (`useReducer`, `useMemo`, `useEffect`)
+-   Centralized state logic with Reducers and typed Actions
+-   Type-safe development using TypeScript interfaces and custom types
+-   Persistent state handling with localStorage integration
+-   Modular and scalable component architecture
+-   Efficient array operations (`map`, `filter`, `reduce`)
+
+------------------------------------------------------------------------
+
+## 🛠️ Technologies Used
+
+-   React 19
+-   Vite
+-   TypeScript
+-   Tailwind CSS
+-   Heroicons
+-   UUID (for unique activity identifiers)
+
+------------------------------------------------------------------------
+
+## 🧩 Project Structure
+
+``` bash
+calorie-tracker/
+├── src/
+│   ├── components/       # Reusable UI components (Form, List, Tracker, etc.)
+│   ├── data/             # Static configuration and categories
+│   ├── reducers/         # Reducer logic and state definitions
+│   ├── types/            # TypeScript interfaces and type definitions
+│   ├── App.tsx           # Root application component
+│   ├── main.tsx          # Application entry point
+│   └── index.css         # Global styles & Tailwind directives
+├── public/               # Static assets
+├── index.html            # HTML template
+├── package.json          # Dependencies and scripts
+└── vite.config.ts        # Vite configuration
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+------------------------------------------------------------------------
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚙️ Installation & Setup
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1.  Clone the repository:
+
+``` bash
+git clone https://github.com/lorelvis-santos/calorie-tracker.git
 ```
+
+2.  Navigate into the project folder:
+
+``` bash
+cd calorie-tracker
+```
+
+3.  Install dependencies:
+
+``` bash
+npm install
+# or
+pnpm install
+```
+
+4.  Start the development server:
+
+``` bash
+npm run dev
+```
+
+The application will be available at:
+
+    http://localhost:5173
+
+------------------------------------------------------------------------
+
+## 📸 Preview
+
+_![App preview](./src/assets/preview.png)_
+
+------------------------------------------------------------------------
+
+## 📚 Credits
+
+This project was developed as part of the React & TypeScript course by
+Juan de la Torre and adapted for educational and portfolio purposes.
+
+------------------------------------------------------------------------
+
+## 📝 License
+
+This project is intended for educational use only and is not licensed
+for commercial distribution.
