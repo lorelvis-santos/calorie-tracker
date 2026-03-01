@@ -1,13 +1,8 @@
-import { useState, type FormEvent, useEffect, type Dispatch } from "react";
+import { useState, type FormEvent, useEffect } from "react";
 import type { Activity, Category } from "../types";
 import { v4 as uuidv4 } from "uuid";
 import { categories } from "../data/categories"
-import type { ActivityActions, ActivityState } from "../reducers/activityReducer";
-
-type FormProps = {
-  state: ActivityState;
-  dispatch: Dispatch<ActivityActions>;
-}
+import { useActivity } from "../hooks/useActivity";
 
 const initialState: Activity = {
   id: uuidv4(),
@@ -20,7 +15,8 @@ const getCategory = (id: Category["id"]): Category | null => {
   return categories.find(x => x.id === id) ?? null;
 }
 
-export default function Form({ state, dispatch } : FormProps) {
+export default function Form() {
+  const {state, dispatch} = useActivity();
   const [activity, setActivity] = useState<Activity>(initialState);
 
   useEffect(() => {

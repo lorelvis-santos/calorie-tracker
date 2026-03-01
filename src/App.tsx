@@ -1,11 +1,11 @@
-import { useEffect, useReducer, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import Form from "./components/Form";
-import { activityReducer, initialState } from "./reducers/activityReducer";
 import { ActivitiesList } from "./components/ActivitiesList";
 import CalorieTracker from "./components/CalorieTracker";
+import { useActivity } from "./hooks/useActivity";
 
 function App() {
-  const [state, dispatch] = useReducer(activityReducer, initialState);
+  const { state, dispatch } = useActivity()
   const canRestart = useMemo(() => state.activities.length > 0, [state.activities])
 
   useEffect(() => {
@@ -32,26 +32,18 @@ function App() {
 
       <section className="bg-lime-500 py-20 px-5">
         <div className="max-w-5xl mx-auto">
-          <Form
-            state={state}
-            dispatch={dispatch}
-          />
+          <Form />
         </div>
       </section>
 
       <section className="bg-gray-800 py-10 px-5">
         <div className="max-w-4xl mx-auto">
-          <CalorieTracker
-            activities={state.activities}
-          />
+          <CalorieTracker />
         </div>
       </section>
 
       <section className="p-10 mx-auto max-w-4xl">
-        <ActivitiesList
-          activities={state.activities}
-          dispatch={dispatch}
-        />
+        <ActivitiesList />
       </section>
     </>
   )
